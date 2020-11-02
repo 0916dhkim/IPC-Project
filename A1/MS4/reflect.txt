@@ -1,0 +1,62 @@
+Three bugs were found from the original program. This reflection describes how each bug was discovered and fixed.
+
+The first bug was found when source code was compiled with "-Wall -Werror" flags. gcc output pointed out that there
+was "comparison between pointer and integer" on line 57 of "contacts.c" file:
+
+if (yesNo == "y" || yesNo == "Y") {
+
+Variable "yesNo" is a char type (integer) and it was being compared to a c-string (pointer). The first bug is then
+fixed by replacing double-quotes with single-quotes to match types:
+
+if (yesNo == 'y' || yesNo == 'Y') {
+
+After resolving compilation errors, the program was executed and the output was compared against the expected output
+from the specification. A malfunctioning user-prompt was discovered during this step. After entering 'y' when asked
+"Do you want to enter a home phone number?", the program failed to ask for the actual home phone number and skipped
+to the next prompt. Line 83 through 89 of "contacts.c" file were responsible for the home phone number prompt, and
+the debugger skipped the if-statement when stepped-over:
+
+if (yesNo == 'y' && yesNo == 'Y') {
+
+As seen here, a wrong logical operator was used to check for "yesNo" value. "yesNo" can never be both 'y' and 'Y', so
+the program could not execute the if-body. Like the first bug, the second bug was replaced to the following line:
+
+if (yesNo == 'y' || yesNo == 'Y') {
+
+Also, there was an error when printing out the final output. The middle initial row printed the middle initial plus
+the last name. It seemed like a null terminator was missing in "Contact.name.middleInitial" and therefore reads until
+the null terminator of "Contact.name.lastName". "scanf" function call on line 34 of "contacts.c" file and
+"struct Name" definition were inspected to find the cause of missing null terminator. The sample input for middle
+initial was 5 characters long ("N. O."), so it required a char array of length 6. "struct Name" only allocated length
+5 array for "middleInitial" field, and there was no space for a null terminator. In this case, "scanf" function
+assigns the null terminator to the first element of "lastName" field because fields are contiguous in a structure.
+The incorrectly assigned null terminator gets overwritten when user enters the last name.
+
+Here is a (not to scale) visualization of "struct Contact" to help understanding how memory is laid out:
+
+|firstName|middleInitial|lastName|streetNumber|street|apartmentNumber|postalCode|city|cell|home|business|
+|--------------Name--------------|----------------------Address----------------------|------Numbers-----|
+|------------------------------------------------Contact------------------------------------------------|
+
+A "struct Contact" is assigned as a big chunk of contiguous memory where all fields are laid out linearly from
+"firstName" to "business". That is why a missing null terminator in "middleInitial" field results in "middleInitial"
+plus "lastName".
+
+After fixing all three bugs, the program matched the expected output. Although there was no bug, there were repeating
+code blocks in "contacts.c" file where it prompts user for yes-or-no questions. A function named "promptUser" is
+added to refactor the repeating code:
+
+void promptUser(char *message, char *yesNoOut);
+
+This function takes two arguments. "message" parameter takes a prompt message c-string to display before reading user
+input, and "yesNoOut" parameter takes an address of char to save user input. This function can be called like the
+following:
+
+promptUser("Do you ...? (y or n): ", &yesNo);
+
+"promptUser" does not return any value because it assigns the user input to "yesNoOut" argument.
+
+In this program, there are many "scanf" calls with "%[^\n]%*c" format. This format allows the program to read
+standard input up to a '\n' character and discard the '\n' character. It is especially useful if one needs to read a
+string including whitespaces because "%s" format cannot read past any whitespace character.
+
