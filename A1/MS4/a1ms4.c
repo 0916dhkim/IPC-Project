@@ -1,14 +1,13 @@
 /* -------------------------------------------
-Name:
-Student number:
-Email:
-Section:
-Date:
+Name: Donghyeon Kim
+Student number: 151613197
+Email: dkim167@myseneca.ca
+Section: NSS
+Date: 2020/11/02
 ----------------------------------------------
 Assignment: 1
 Milestone:  4
 ---------------------------------------------- */
-
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
