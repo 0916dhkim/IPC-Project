@@ -12,7 +12,7 @@ Milestone:  4
 // Structure type Name declaration (Milestone 1)
 struct Name {
     char firstName[31];
-    char middleInitial[5];
+    char middleInitial[6];
     char lastName[36];
 };
 
