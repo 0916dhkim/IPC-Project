@@ -25,8 +25,11 @@ Milestone:  4
  * in yesNoOut.
  */
 void promptUser(char *message, char *yesNoOut) {
+    char c = 0;
     printf("%s", message);
-    scanf("%s%*c", yesNoOut);
+    while ((c = getchar()) != '\n') {
+        *yesNoOut = c;
+    }
 }
 
 void getName(struct Name *name) {
@@ -40,7 +43,7 @@ void getName(struct Name *name) {
 
     if (yesNo == 'y' || yesNo == 'Y') {
         printf("Please enter the contact's middle initial(s): ");
-        scanf("%6[^\n]%*c", name->middleInitial);
+        scanf("%5[^\n]%*c", name->middleInitial);
     }
 
     printf("Please enter the contact's last name: ");
