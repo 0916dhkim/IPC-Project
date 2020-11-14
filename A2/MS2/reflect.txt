@@ -1,0 +1,27 @@
+Name: Donghyeon Kim
+Student number: 151613197
+Email: dkim167@myseneca.ca
+Section: NSS
+Date: 2020/11/14
+Assignment: 2
+Milestone:  2
+
+From this assignment, I learned how to divide a problem into smaller parts. Although the
+strategy of decomposition can be applied to other parts of programming, this milestone
+was specifically about extracting user-input related features into helper functions.
+Writing CLI is a very delicate matter in C programming because it requires accurate
+handling of the standard input and char pointers. As demonstrated in assignment 1, single
+misplaced character can result in noticeably inconvenient user experience. This is why it
+is a good idea to abstract away user-input related features.
+
+In C programming language, a reusable piece of algorithm can be expressed as a function.
+Also, C allows separating the shape (prototype) of a function from the implementation. If
+there were no functions, software development would get more complicated, as no software
+can be divided into smaller parts. Absence of functions will also be detrimental to
+collaboration workflow. In this assignment, [contactHelpers] module was separated from
+[contacts] module because [contactHelpers] module is explicitly about user-input and
+independent from [struct Contact].
+
+Personally, I found the test code (a2ms2.c) provided by the instructor helpful while I
+was implementing each helper functions. I could test each function independently, and
+quickly narrow down issues as they occur.
