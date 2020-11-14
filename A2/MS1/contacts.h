@@ -1,14 +1,13 @@
-//==============================================
-// Name:           Full name here
-// Student Number: #########
-// Email:          userID@myseneca.ca
-// Section:        XXX
-// Date:           
-//==============================================
-// Assignment:     2
-// Milestone:      2
-//==============================================
-
+/* -------------------------------------------
+Name: Donghyeon Kim
+Student number: 151613197
+Email: dkim167@myseneca.ca
+Section: NSS
+Date: 2020/11/14
+----------------------------------------------
+Assignment: 2
+Milestone:  1
+---------------------------------------------- */
 
 //--------------------------------
 // Structure Types
@@ -18,7 +17,7 @@
 struct Name
 {
     char firstName[31];
-    // char middleInitial[5]; // <- NO! Must accommodate 6 character + null terminator byte = 7
+    char middleInitial[7];
     char middleInitial[7];
     char lastName[36];
 };
@@ -62,10 +61,6 @@ void getAddress(struct Address* address);
 // Get and store from standard input the values for Numbers
 void getNumbers(struct Numbers* numbers);
 
-// +-------------------------------------------------+
-// |    ====== Assignment 2 | Milestone 1 =======    |
-// |                                                 |
-// | NOTE:  Copy/Paste your Assignment-2 Milestone-1 |
-// |        function prototypes here...              |
-// +-------------------------------------------------+
+// Get and store from standard input the values for Contact
+void getContact(struct Contact *contact);
 

@@ -1,13 +1,13 @@
-//==============================================
-// Name:           Full name here
-// Student Number: #########
-// Email:          userID@myseneca.ca
-// Section:        XXX
-// Date:           
-//==============================================
-// Assignment:     2
-// Milestone:      1
-//==============================================
+/* -------------------------------------------
+Name: Donghyeon Kim
+Student number: 151613197
+Email: dkim167@myseneca.ca
+Section: NSS
+Date: 2020/11/14
+----------------------------------------------
+Assignment: 2
+Milestone:  1
+---------------------------------------------- */
 
 #define _CRT_SECURE_NO_WARNINGS
 
@@ -28,7 +28,6 @@ void getName(struct Name* name)
     scanf("%30[^\n]%*c", name->firstName);
 
     printf("Do you want to enter a middle initial(s)? (y or n): ");
-    //scanf("%s%*c", &yesNo); //<--- Incorrect, not a c string, must be a char
     scanf("%c%*c", &yesNo);
 
     if (yesNo == 'y' || yesNo == 'Y')
@@ -91,7 +90,6 @@ void getNumbers(struct Numbers* numbers)
     printf("Do you want to enter a home phone number? (y or n): ");
     scanf("%c%*c", &yesNo);
 
-    //if (yesNo == 'y' && yesNo == 'Y') // <-- No! can't be both 'y' AND 'Y' (should be OR ||)
     if (yesNo == 'y' || yesNo == 'Y')
     {
         printf("Please enter the contact's home phone number: ");
@@ -108,9 +106,8 @@ void getNumbers(struct Numbers* numbers)
     }
 }
 
-// +-------------------------------------------+
-// | ====== Assignment 2 | Milestone 1 ======= |
-// +-------------------------------------------+
-
 // getContact:
-// Define Empty function definition below:
+void getContact(struct Contact *contact)
+{
+
+}
