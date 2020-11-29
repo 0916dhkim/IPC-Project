@@ -1,0 +1,13 @@
+Name: Donghyeon Kim
+Student number: 151613197
+Email: dkim167@myseneca.ca
+Section: NSS
+Date: 2020/11/29
+Assignment: 2
+Milestone:  4
+
+In this assignment, I learned how to sort a struct array in-place. [strcmp] function was useful to compare two contact entries by their cell phone numbers.
+
+Utility functions like [findContactIndex] and [getTenDigitPhone] really helped me debug the program efficiently. For example, if I have duplicated code blocks instead of refactoring them into utility functions, it would have been difficult to fix bugs in those repeated logics. Because repeating logics are reduced into a function, I could just fix one function instead of applying the fix everywhere. It is obvious that larger projects will benefit more from refactoring repeating logics into utility functions. Utility functions also improve the readability of code by abstracting away details. By leaving only high-level logics inside large functions, programmers can see how everything fits together in one sight. This is especially useful for C programmers because the C programming language only provides low-level standard library.
+
+I would have loved to do file I/O for this assignment because file I/O is a skill that can be applied to many other use cases. Also, saving contacts data to a file is a common feature in real-world softwares.
